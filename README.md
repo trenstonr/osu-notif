@@ -79,7 +79,7 @@ sudo systemctl status osu-class-monitor
 # View logs
 sudo journalctl -u osu-class-monitor -f
 
-# Uninstall
+# Uninstall / stop service
 sudo npm run uninstall-service
 ```
 - **Email Alerts**: Detailed notifications sent to your email
@@ -124,27 +124,3 @@ This application is optimized for Raspberry Pi 5:
 - Use app passwords for Gmail instead of regular passwords
 - The application only makes HTTPS requests to osu.edu
 - No sensitive data is logged or stored
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## License
-
-MIT License - see LICENSE file for details
-
-## Support
-
-For issues and questions:
-1. Check the troubleshooting section above
-2. Review the log files for error details
-3. Ensure your configuration is correct
-4. Verify network connectivity to osu.edu
-
-## Disclaimer
-
-This application is not affiliated with Oregon State University. It is provided as-is for educational and personal use. The authors are not responsible for any issues related to class registration or scheduling.
