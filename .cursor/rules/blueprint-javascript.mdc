@@ -1,0 +1,15 @@
+---
+description: JavaScript best practices and conventions
+globs: **/*.js, **/*.mjs, **/*.cjs
+alwaysApply: false
+---
+
+## JavaScript Best Practices
+- Prefer `const` over `let`; never use `var`.
+- Use optional chaining (`?.`) and nullish coalescing (`??`) over manual null checks.
+- Prefer `async/await` over raw Promise chains for readability.
+- Use destructuring for object/array access where it improves clarity.
+- Always handle errors in async functions with try/catch or .catch().
+- Prefer template literals over string concatenation.
+- Use `===` over `==` for comparisons.
+- Keep functions small and single-purpose; extract helpers aggressively.
