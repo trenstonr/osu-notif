@@ -4,7 +4,7 @@ const os = require('os');
 const { execSync } = require('child_process');
 
 const SERVICE_NAME = 'osu-class-monitor';
-const PROJECT_DIR = __dirname + '/..';
+const PROJECT_DIR = path.resolve(__dirname, '..')
 const USER = os.userInfo().username;
 
 // Find node path
