@@ -1,10 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const { execSync } = require('child_process');
 
 const SERVICE_NAME = 'osu-class-monitor';
 const PROJECT_DIR = __dirname + '/..';
 const USER = os.userInfo().username;
+
+// Find node path
+let nodePath = '/usr/bin/node';
+try {
+  nodePath = execSync('which node', { encoding: 'utf-8' }).trim();
+} catch (e) {
+  // Use default if which fails
+}
 
 // Create systemd service file content
 const serviceContent = `[Unit]
@@ -15,7 +24,7 @@ After=network.target
 Type=simple
 User=${USER}
 WorkingDirectory=${PROJECT_DIR}
-ExecStart=/usr/bin/node index.js
+ExecStart=${nodePath} index.js
 Restart=always
 RestartSec=10
 Environment=NODE_ENV=production
@@ -44,7 +53,6 @@ try {
   console.log(`✓ Created service file: ${serviceFilePath}`);
   
   // Reload systemd
-  const { execSync } = require('child_process');
   execSync('systemctl daemon-reload', { stdio: 'inherit' });
   console.log('✓ Reloaded systemd');
   
