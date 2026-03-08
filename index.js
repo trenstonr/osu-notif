@@ -2,7 +2,7 @@ const cron = require('node-cron');
 const chalk = require('chalk').default;
 const { createLogger, format, transports } = require('winston');
 const { combine, timestamp, printf } = format;
-const notifier = require('node-notifier');
+
 const dotenv = require('dotenv');
 const path = require('path');
 
@@ -17,7 +17,6 @@ const { parseClassesConfig, formatClassInfo } = require('./lib/utils');
 // Configuration
 const CHECK_INTERVAL = parseInt(process.env.CHECK_INTERVAL) || 5;
 const LOG_LEVEL = process.env.LOG_LEVEL || 'info';
-const ENABLE_DESKTOP_NOTIFICATIONS = process.env.ENABLE_DESKTOP_NOTIFICATIONS === 'true';
 const ENABLE_CONSOLE_NOTIFICATIONS = process.env.ENABLE_CONSOLE_NOTIFICATIONS === 'true';
 const ENABLE_EMAIL_NOTIFICATIONS = process.env.ENABLE_EMAIL_NOTIFICATIONS === 'true';
 
@@ -85,15 +84,6 @@ cron.schedule(schedule, async () => {
             // Send notifications
             if (ENABLE_CONSOLE_NOTIFICATIONS) {
               console.log(chalk.green(message));
-            }
-            
-            if (ENABLE_DESKTOP_NOTIFICATIONS) {
-              notifier.notify({
-                title: 'OSU Class Monitor',
-                message: message,
-                sound: true,
-                wait: true
-              });
             }
             
             if (ENABLE_EMAIL_NOTIFICATIONS) {

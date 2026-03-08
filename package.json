@@ -19,7 +19,6 @@
     "dotenv": "^16.3.1",
     "chalk": "^5.3.0",
     "winston": "^3.11.0",
-    "node-notifier": "^10.0.1",
     "nodemailer": "^6.9.7"
   },
   "devDependencies": {
